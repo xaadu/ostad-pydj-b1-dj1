@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Cool Todo App
+{% endblock %}
+
+{% block content %}
+<h1>My Todos</h1>
+
+<!-- <form method="get">
+    <input type="text" name="query" placeholder="Search">
+    <button type="submit">Search</button>
+</form> -->
+
+<!-- <form method="post">
+    {% csrf_token %}
+
+    {{ search_form }}
+    <button type="submit">Submit</button>
+</form> -->
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ add_todo_form }}
+
+    <button type="submit">Add Todo</button>
+</form>
+
+<ul>
+    {% for todo in todos %}
+    <li>
+        {{ todo.title }} - {{ todo.completed }}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
+<!-- <input type="checkbox" {% if todo.done %}checked{% endif %}> -->
